@@ -1,5 +1,6 @@
 package br.edu.ifsul.testes;
 
+import br.edu.ifsul.jpa.EntityManagerUtil;
 import br.edu.ifsul.modelo.Pais;
 import java.util.Set;
 import javax.persistence.EntityManager;
@@ -12,8 +13,7 @@ import javax.validation.Validator;
 public class TesteValidarPais {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("IFSULModelPU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
         Pais p = new Pais();
         p.setNome("Venezuela");
         p.setIso("VENNN");
@@ -29,7 +29,6 @@ public class TesteValidarPais {
         }
         em.getTransaction().commit();
         em.close();
-        emf.close();
     }
 
 }
